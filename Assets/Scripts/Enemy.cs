@@ -1,18 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _health;
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private float _delay;
+
+    private void Start()
     {
-        
+        StartCoroutine(Shoot());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Shoot()
     {
-        
+        var wait = new WaitForSeconds(_delay);
+
+        while (enabled)
+        {
+            _weapon.Shoot(_shootPoint);
+            yield return wait;
+        }
     }
 }

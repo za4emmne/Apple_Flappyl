@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
     private void OnPlayButtonClick()
     {
         StartGame();
-
     }
 
     private void StartGame()
