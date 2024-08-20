@@ -10,6 +10,7 @@ public class Bird : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Transform _shootPoint;
+    [SerializeField] private float _speed;
 
     private BirdMover _birdMover;
     private ScoreCounter _scoreCounter;
@@ -26,9 +27,9 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            _weapon.Shoot(_shootPoint); 
+            _weapon.Shoot(_shootPoint, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z-180), _speed); 
         }
     }
 

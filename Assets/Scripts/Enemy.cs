@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour, IInteractable
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private float _delay;
+    [SerializeField] private float _speed;
+    [SerializeField] private BirdCollisionHandler _birdCollisionHandler;
 
     private void Start()
     {
@@ -19,8 +21,16 @@ public class Enemy : MonoBehaviour, IInteractable
 
         while (enabled)
         {
-            _weapon.Shoot(_shootPoint);
+            _weapon.Shoot(_shootPoint, transform.rotation, _speed);
             yield return wait;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Bullet bullet))
+        {
+            Destroy(gameObject);
         }
     }
 }

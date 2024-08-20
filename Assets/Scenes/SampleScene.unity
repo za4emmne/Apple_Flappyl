@@ -1138,6 +1138,7 @@ MonoBehaviour:
   _health: 2
   _weapon: {fileID: 1123761313}
   _shootPoint: {fileID: 1819495888}
+  _speed: 8
 --- !u!95 &1123761309
 Animator:
   serializedVersion: 5
@@ -1467,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pool: {fileID: 1951614037}
-  _poolEnemy: {fileID: 0}
+  _poolEnemy: {fileID: 1943686427}
 --- !u!61 &1499904874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1644,7 +1645,7 @@ Transform:
   m_GameObject: {fileID: 1819495887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.077, y: 0, z: 0}
+  m_LocalPosition: {x: 0.097, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
