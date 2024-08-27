@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour, IInteractable
     [SerializeField] private Weapon _weapon;
     [SerializeField] private float _delay;
     [SerializeField] private float _speed;
-    [SerializeField] private BirdCollisionHandler _birdCollisionHandler;
 
     private void Start()
     {

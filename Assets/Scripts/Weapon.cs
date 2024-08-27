@@ -7,8 +7,7 @@ public class Weapon : MonoBehaviour
     public void Shoot(Transform shootPoint, Quaternion quaternion, float speed)
     { 
         _bullet.SetSpeed(speed);
-        Instantiate(_bullet, shootPoint.position, quaternion);
-
+        Bullet bullet = Instantiate(_bullet, shootPoint.position, quaternion);
+        
     }
-
 }

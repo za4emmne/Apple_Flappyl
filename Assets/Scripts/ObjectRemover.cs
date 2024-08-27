@@ -1,19 +1,14 @@
 using UnityEngine;
 
-public class ObjectRemover : MonoBehaviour
+public class ObjectRemover<T, K> : MonoBehaviour where T : SpawnerObjects<K> where K : MonoBehaviour
 {
-    [SerializeField] private ObjectPool _pool;
-    [SerializeField] private ObjectPoolEnemy _poolEnemy;
+    [SerializeField] private T _spawner;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Pipe pipe))
-            _pool.PutObject(pipe);
+        K objectK;
 
-        if (collision.TryGetComponent(out Enemy enemy))
-            _poolEnemy.PutObject(enemy);
-
-        if (collision.TryGetComponent(out Bullet bullet))
-            Destroy(bullet.gameObject);
+        if (objectK = collision.GetComponent<K>())
+            _spawner.Release(objectK);
     }
 }

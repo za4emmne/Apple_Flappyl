@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BirdMover : MonoBehaviour
 {
+    [SerializeField] private InputReader _inputReader;
     [SerializeField] private float _tapForce;
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
@@ -26,7 +27,7 @@ public class BirdMover : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(_inputReader.DownButtonBirdUp())
         {
             _rigidbody.velocity = new Vector2(_speed, _tapForce);
             transform.rotation = _maxRotation;

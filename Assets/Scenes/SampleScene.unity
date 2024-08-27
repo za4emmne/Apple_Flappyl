@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -678,6 +679,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreCounter: {fileID: 1123761312}
   _score: {fileID: 1620096347}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becc32d6fdeb9b04ca67862f69214388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keysUp: 20000000
+  _keysShoot: 61000000
 --- !u!1 &582333387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501f3a21d7033414884c29ed4b745921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 519420036}
   _tapForce: 4
   _speed: 2.5
   _rotationSpeed: 1
@@ -1139,6 +1155,7 @@ MonoBehaviour:
   _weapon: {fileID: 1123761313}
   _shootPoint: {fileID: 1819495888}
   _speed: 8
+  _inputReader: {fileID: 519420036}
 --- !u!95 &1123761309
 Animator:
   serializedVersion: 5
@@ -1410,17 +1427,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1342655453 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3686815353715857528, guid: 1354ffeeadc53aa4d92d227b6ad59921, type: 3}
-  m_PrefabInstance: {fileID: 992913984773313479}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2418a0328055b4fad0c53f46adcaf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1499904871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,8 +1437,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1499904872}
   - component: {fileID: 1499904874}
-  - component: {fileID: 1499904873}
   - component: {fileID: 1499904875}
+  - component: {fileID: 1499904876}
+  - component: {fileID: 1499904877}
   m_Layer: 0
   m_Name: PipeRemower
   m_TagString: Untagged
@@ -1455,20 +1462,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1499904873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499904871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b30e53d36bc004d9a183b18074faac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pool: {fileID: 1951614037}
-  _poolEnemy: {fileID: 1943686427}
 --- !u!61 &1499904874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1541,6 +1534,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1499904876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499904871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35c48f6dbfd4c843804feb60075fd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 1951614038}
+--- !u!114 &1499904877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499904871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c2896ea034ad148a471d9b395376c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 1943686428}
 --- !u!1 &1620096345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,7 +1680,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1943686426}
   - component: {fileID: 1943686428}
-  - component: {fileID: 1943686427}
   m_Layer: 0
   m_Name: SpawnerEnemy
   m_TagString: Untagged
@@ -1684,20 +1702,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1943686427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943686425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a6e1c879dd9fbb46976f7d22aced1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 1943686426}
-  _enemy: {fileID: 4571027713501732001, guid: a1eb4125eb37cb3438e7141abce96c58, type: 3}
 --- !u!114 &1943686428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1710,10 +1714,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb3e14ea73d8504cb281546d52c10fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 4571027713501732001, guid: a1eb4125eb37cb3438e7141abce96c58, type: 3}
   _delay: 5
+  _minDelayOnSpawn: 2
+  _maxDelayOnSpawn: 4
+  _minCountObjectsInSpawn: 2
+  _maxCountObjectsInSpawn: 5
+  _poolCapacity: 10
+  _poolMaxSize: 10
+  _globalSpawn: 0
   _upBand: 3
   _downBand: -1.5
-  _objectPool: {fileID: 1943686427}
 --- !u!1 &1951614035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1735,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1951614036}
   - component: {fileID: 1951614038}
-  - component: {fileID: 1951614037}
   m_Layer: 0
   m_Name: SpawnerPipe
   m_TagString: Untagged
@@ -1747,20 +1757,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1951614037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951614035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2400ecf983b354299a9ba87dda2a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 1951614036}
-  _pipe: {fileID: 1342655453}
 --- !u!114 &1951614038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1773,10 +1769,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9970a3bebd58ead42b4674b05dd42744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 3686815353715857528, guid: 1354ffeeadc53aa4d92d227b6ad59921, type: 3}
   _delay: 4
+  _minDelayOnSpawn: 2
+  _maxDelayOnSpawn: 4
+  _minCountObjectsInSpawn: 2
+  _maxCountObjectsInSpawn: 5
+  _poolCapacity: 10
+  _poolMaxSize: 10
+  _globalSpawn: 1
   _upBand: 6.5
   _downBand: 5.5
-  _objectPool: {fileID: 1951614037}
 --- !u!1 &2062939014
 GameObject:
   m_ObjectHideFlags: 0

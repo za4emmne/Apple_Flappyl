@@ -157,8 +157,7 @@ MonoBehaviour:
   _shootPoint: {fileID: 6613348554990004664}
   _weapon: {fileID: 4719095574019521042}
   _delay: 4
-  _speed: 4
-  _birdCollisionHandler: {fileID: 0}
+  _speed: -4
 --- !u!114 &4719095574019521042
 MonoBehaviour:
   m_ObjectHideFlags: 0

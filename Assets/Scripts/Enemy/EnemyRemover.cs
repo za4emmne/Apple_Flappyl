@@ -1,0 +1,1 @@
+public class EnemyRemover : ObjectRemover<EnemyGenerator, Enemy> { }
