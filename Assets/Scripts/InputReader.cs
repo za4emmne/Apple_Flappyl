@@ -5,12 +5,12 @@ public class InputReader : MonoBehaviour
     [SerializeField] private KeyCode[] _keysUp;
     [SerializeField] private KeyCode[] _keysShoot;
 
-    public bool DownButtonBirdUp()
+    public bool IsDownButtonBirdUp()
     {
         return DownButton(_keysUp);
     }
 
-    public bool DownButtonBirdShoot()
+    public bool IsDownButtonBirdShoot()
     {
         return DownButton(_keysShoot);
     }

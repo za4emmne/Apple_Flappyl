@@ -3,11 +3,10 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
+    [SerializeField] private BulletSpawner _bulletSpawner;
 
-    public void Shoot(Transform shootPoint, Quaternion quaternion, float speed)
+    public void Shoot(Transform shootPoint)
     { 
-        _bullet.SetSpeed(speed);
-        Bullet bullet = Instantiate(_bullet, shootPoint.position, quaternion);
-        
+        _bulletSpawner.GetObjectFromPool(shootPoint);
     }
 }

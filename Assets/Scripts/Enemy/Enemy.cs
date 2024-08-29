@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IInteractable
 
         while (enabled)
         {
-            _weapon.Shoot(_shootPoint, transform.rotation, _speed);
+            _weapon.Shoot(_shootPoint);
             yield return wait;
         }
     }

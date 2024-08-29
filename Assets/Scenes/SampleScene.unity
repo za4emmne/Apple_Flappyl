@@ -1259,6 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 829837382296470831, guid: f0109ccf6ebbe9e4bb1542f9f7d5ec4d, type: 3}
+  _bulletSpawner: {fileID: 1819495889}
 --- !u!1 &1224836242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1819495888}
+  - component: {fileID: 1819495889}
   m_Layer: 0
   m_Name: ShootPoint
   m_TagString: Untagged
@@ -1670,6 +1672,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1123761307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819495889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819495887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80663baa6432fc4a83211ff4c2883e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 829837382296470831, guid: f0109ccf6ebbe9e4bb1542f9f7d5ec4d, type: 3}
+  _delay: 1
+  _minDelayOnSpawn: 1
+  _maxDelayOnSpawn: 1
+  _minCountObjectsInSpawn: 1
+  _maxCountObjectsInSpawn: 1
+  _poolCapacity: 10
+  _poolMaxSize: 10
+  _globalSpawn: 0
+  _upBand: 0
+  _downBand: 0
 --- !u!1 &1943686425
 GameObject:
   m_ObjectHideFlags: 0

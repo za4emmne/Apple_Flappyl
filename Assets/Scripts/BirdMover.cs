@@ -27,7 +27,7 @@ public class BirdMover : MonoBehaviour
 
     private void Update()
     {
-        if(_inputReader.DownButtonBirdUp())
+        if(_inputReader.IsDownButtonBirdUp())
         {
             _rigidbody.velocity = new Vector2(_speed, _tapForce);
             transform.rotation = _maxRotation;

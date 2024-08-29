@@ -15,7 +15,7 @@ public class Bird : MonoBehaviour
 
     private BirdMover _mover;
     private ScoreCounter _scoreCounter;
-    private BirdCollisionHandler _birdCollisionHandler;
+    private BirdCollisionHandler _ñollisionHandler;
 
     public event Action GameOver;
 
@@ -23,23 +23,25 @@ public class Bird : MonoBehaviour
     {
         _mover = GetComponent<BirdMover>();
         _scoreCounter = GetComponent<ScoreCounter>();
-        _birdCollisionHandler = GetComponent<BirdCollisionHandler>();
+        _ñollisionHandler = GetComponent<BirdCollisionHandler>();
     }
 
     private void Update()
     {
-        if (_inputReader.DownButtonBirdShoot())
-            _weapon.Shoot(_shootPoint, transform.rotation, _speed);
+        if (_inputReader.IsDownButtonBirdShoot())
+        {
+            _weapon.Shoot(_shootPoint);
+        }
     }
 
     private void OnEnable()
     {
-        _birdCollisionHandler.CollisionDetected += ProcessCollision;
+        _ñollisionHandler.CollisionDetected += ProcessCollision;
     }
 
     private void OnDisable()
     {
-        _birdCollisionHandler.CollisionDetected -= ProcessCollision;
+        _ñollisionHandler.CollisionDetected -= ProcessCollision;
     }
 
     public void Reset()
@@ -51,9 +53,13 @@ public class Bird : MonoBehaviour
     private void ProcessCollision(IInteractable interactable)
     {
         if (interactable is Pipe)
+        {
             GameOver?.Invoke();
+        }
         else if (interactable is ScoreZone)
+        {
             _scoreCounter.Add();
+        }
         else if (interactable is Bullet)
         {
             _health -= 1;
