@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BirdMover))]
@@ -12,10 +13,12 @@ public class Bird : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _speed;
     [SerializeField] private InputReader _inputReader;
+    [SerializeField] private int _delay;
 
     private BirdMover _mover;
     private ScoreCounter _scoreCounter;
     private BirdCollisionHandler _ñollisionHandler;
+    private Coroutine _coroutine;
 
     public event Action GameOver;
 
@@ -28,9 +31,9 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        if (_inputReader.IsDownButtonBirdShoot())
+        if (_inputReader.IsDownButtonBirdShoot() && _coroutine == null)
         {
-            _weapon.Shoot(_shootPoint);
+            _coroutine = StartCoroutine(ShootWithDelay());
         }
     }
 
@@ -67,5 +70,16 @@ public class Bird : MonoBehaviour
             if (_health <= 0)
                 GameOver?.Invoke();
         }
+    }
+
+    private IEnumerator ShootWithDelay()
+    {
+        WaitForSeconds wait = new WaitForSeconds(_delay);
+
+        _weapon.Shoot(_shootPoint);
+
+        yield return wait;
+
+        _coroutine = null;
     }
 }

@@ -1,12 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Bullet _bullet;
     [SerializeField] private BulletSpawner _bulletSpawner;
+    [SerializeField] private Quaternion _bulletRotation;
 
-    public void Shoot(Transform shootPoint)
-    { 
-        _bulletSpawner.GetObjectFromPool(shootPoint);
+    public void Shoot(Transform transform)
+    {
+        _bulletSpawner.GetObjectFromPool(transform, _bulletRotation);
     }
 }

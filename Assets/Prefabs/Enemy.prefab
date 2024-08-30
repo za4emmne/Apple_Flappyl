@@ -45,11 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 829837382296470831, guid: f0109ccf6ebbe9e4bb1542f9f7d5ec4d, type: 3}
-  _delay: 1
   _minDelayOnSpawn: 1
   _maxDelayOnSpawn: 1
-  _minCountObjectsInSpawn: 1
-  _maxCountObjectsInSpawn: 1
   _poolCapacity: 10
   _poolMaxSize: 10
   _globalSpawn: 0
@@ -194,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5875145d7226a884d999bbfe3965ad52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 829837382296470831, guid: f0109ccf6ebbe9e4bb1542f9f7d5ec4d, type: 3}
   _bulletSpawner: {fileID: 4601622580867214590}
+  _bulletRotation: {x: 0, y: 90, z: 0, w: 0}
 --- !u!61 &4587923016171212417
 BoxCollider2D:
   m_ObjectHideFlags: 0

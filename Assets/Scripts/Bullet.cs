@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        //_rigidbody.velocity = transform.rotation * _direction;
         _rigidbody.velocity = transform.right * _speed;
     }
 

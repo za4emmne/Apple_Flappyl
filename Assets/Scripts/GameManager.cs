@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Bird _bird;
-    [SerializeField] private PipeGenerator _pipeGenerator;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndScreen _endScreen;
+    [SerializeField] private PipeGenerator _pipeGenerator;
+    [SerializeField] private EnemyGenerator _enemyGeneration;
 
     private void OnEnable()
     {
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
+        _pipeGenerator.StartPlay();
+        _enemyGeneration.StartPlay();
         Time.timeScale = 1; 
         _startScreen.Close();
         _bird.Reset();

@@ -6,11 +6,8 @@ using UnityEngine.Pool;
 public class SpawnerObjects<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField] private T _prefab;
-    [SerializeField] private float _delay;
     [SerializeField] private float _minDelayOnSpawn;
     [SerializeField] private float _maxDelayOnSpawn;
-    [SerializeField] private int _minCountObjectsInSpawn;
-    [SerializeField] private int _maxCountObjectsInSpawn;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
     [SerializeField] private bool _globalSpawn;
@@ -38,16 +35,16 @@ public class SpawnerObjects<T> : MonoBehaviour where T : MonoBehaviour
         );
     }
 
-    private void Update()
+    public void StartPlay()
     {
-        if (_spawnCoroutine == null)
-            _spawnCoroutine = StartCoroutine(SpawnWithDelay());
+        _spawnCoroutine = StartCoroutine(SpawnWithDelay());
     }
 
-    public void GetObjectFromPool(Transform transform)
+    public void GetObjectFromPool(Transform transform, Quaternion quaternion)
     {
         T objectFromPool = _objectPool.Get();
         objectFromPool.gameObject.transform.position = transform.position;
+        objectFromPool.gameObject.transform.rotation = quaternion;
     }
 
     public virtual void OnGet(T spawnObject)
@@ -97,20 +94,12 @@ public class SpawnerObjects<T> : MonoBehaviour where T : MonoBehaviour
     private IEnumerator SpawnWithDelay()
     {
         float delayOnSpawn = Random.Range(_minDelayOnSpawn, _maxDelayOnSpawn);
-
-        WaitForSeconds wait = new WaitForSeconds(_delay);
         WaitForSeconds waitOnSpawn = new WaitForSeconds(delayOnSpawn);
 
-        int countObjectsInSpawn = Random.Range(_minCountObjectsInSpawn, _maxCountObjectsInSpawn);
-
-        for (int i = 0; i < countObjectsInSpawn; i++)
+        while(true)
         {
             _objectPool.Get();
             yield return waitOnSpawn;
         }
-
-        yield return wait;
-
-        _spawnCoroutine = null;
     }
 }
