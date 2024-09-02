@@ -3,9 +3,21 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
+    [SerializeField] private BulletSpawner _spawner;
+
     private int _value;
 
     public event Action<int> Changed;
+
+    private void OnEnable()
+    {
+        _spawner.HitEnemy += Add;
+    }
+
+    private void OnDisable()
+    {
+        _spawner.HitEnemy -= Add;
+    }
 
     public void Add()
     {

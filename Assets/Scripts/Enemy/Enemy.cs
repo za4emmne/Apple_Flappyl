@@ -24,12 +24,4 @@ public class Enemy : MonoBehaviour, IInteractable
             yield return wait;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Bullet bullet))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

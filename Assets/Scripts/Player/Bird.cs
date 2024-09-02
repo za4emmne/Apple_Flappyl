@@ -59,10 +59,10 @@ public class Bird : MonoBehaviour
         {
             GameOver?.Invoke();
         }
-        else if (interactable is ScoreZone)
-        {
-            _scoreCounter.Add();
-        }
+        //else if (interactable is ScoreZone)
+        //{
+        //    _scoreCounter.Add();
+        //}
         else if (interactable is Bullet)
         {
             _health -= 1;
